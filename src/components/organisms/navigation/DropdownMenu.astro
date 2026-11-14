@@ -4,10 +4,14 @@ import { Icon } from "astro-icon/components";
 import { LinkPresets } from "../../../constants/link-presets";
 import I18nKey from "../../../i18n/i18nKey";
 import { i18n } from "../../../i18n/translation";
+import { isNavLinkActive } from "../../../utils/nav-active";
 import { url } from "../../../utils/url-utils";
 import type { DropdownMenuProps } from "./types";
 
 const { link, class: className } = Astro.props as DropdownMenuProps;
+
+const isCurrentLink = (href: string, external?: boolean): boolean =>
+	!external && isNavLinkActive(url(href), Astro.url);
 
 const navTitleMap: Record<string, I18nKey> = {
 	Links: I18nKey.navLinks,
@@ -36,7 +40,7 @@ const children =
 const hasChildren = children.length > 0;
 ---
 
-<div class:list={["dropdown-container group", className]} data-dropdown>
+<div class:list={["dropdown-container group", className]} data-dropdown data-nav-group>
 	{
 		hasChildren ? (
 			<>
@@ -45,6 +49,8 @@ const hasChildren = children.length > 0;
 					aria-expanded="false"
 					aria-haspopup="true"
 					data-dropdown-trigger
+					data-nav-parent
+					data-nav-active={children.some((child) => isCurrentLink(child.url, child.external)) ? "" : undefined}
 				>
 					{link.icon && (
 						<Icon
@@ -76,6 +82,8 @@ const hasChildren = children.length > 0;
 								}
 								class="dropdown-item"
 								aria-label={child.name}
+								data-nav-link={child.external ? undefined : ""}
+								aria-current={isCurrentLink(child.url, child.external) ? "page" : undefined}
 							>
 								<div class="flex items-center">
 									{child.icon && (
@@ -100,6 +108,8 @@ const hasChildren = children.length > 0;
 		) : (
 			<a
 				aria-label={link.name}
+				data-nav-link={link.external ? undefined : ""}
+				aria-current={isCurrentLink(link.url, link.external) ? "page" : undefined}
 				href={link.external ? link.url : url(link.url)}
 				target={link.external ? "_blank" : null}
 				rel={link.external ? "noopener noreferrer" : null}

@@ -20,5 +20,10 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"liveServer.settings.root": "/dist",
-	"frontMatter.dashboard.openOnStart": false
+	"frontMatter.dashboard.openOnStart": false,
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true
 }

@@ -4,10 +4,9 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	enable: true,
 	src: {
 		desktop: [
-			"/assets/desktop-banner/1.webp",
-			"/assets/desktop-banner/2.webp",
-			"/assets/desktop-banner/3.webp",
-			"/assets/desktop-banner/4.webp",
+			"/assets/desktop-banner/1.jpg",
+			"/assets/desktop-banner/2.jpg",
+			"/assets/desktop-banner/4.jpg",
 		],
 		mobile: [
 			"/assets/mobile-banner/1.webp",
@@ -19,11 +18,11 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	position: "center",
 	carousel: {
 		enable: true,
-		interval: 5,
+		interval: 3,
 	},
 	zIndex: -1,
 	opacity: 0.8,
-	blur: 1,
+	blur: 2,
 	switchable: true,
 	overlay: {
 		opacity: 0.8, // 壁纸不透明度，0-1

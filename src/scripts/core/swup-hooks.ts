@@ -3,6 +3,7 @@
  * 处理页面过渡过程中的各种钩子事件
  */
 
+import { updateActiveNavLinks } from "../../utils/nav-active";
 import { pathsEqual, url } from "../../utils/url-utils";
 import type { FancyboxHandler } from "../handlers/fancybox-handler";
 import type { ScrollHandler } from "../handlers/scroll-handler";
@@ -79,6 +80,7 @@ export class SwupHooksManager {
 		this.registerPageViewHook();
 		this.registerVisitEndHook();
 		this.updatePageOverlay();
+		updateActiveNavLinks();
 	}
 
 	private registerScrollTopHook(): void {
@@ -171,6 +173,7 @@ export class SwupHooksManager {
 			);
 			this.ensureNavbarVisibleForFullscreen();
 			this.updatePageOverlay();
+			updateActiveNavLinks();
 
 			// 初始化新页面的图片、公式、滚动条和 TOC
 			this.handlers.initFancybox?.();
@@ -223,6 +226,7 @@ export class SwupHooksManager {
 			);
 			this.ensureNavbarVisibleForFullscreen();
 			this.updatePageOverlay();
+			updateActiveNavLinks();
 
 			// 扩展页面高度
 			this.extendPageHeight(false);

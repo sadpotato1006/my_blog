@@ -1,0 +1,39 @@
+---
+import { getEntry, render } from "astro:content";
+import Comment from "@components/comment/index.astro";
+import Markdown from "@components/misc/Markdown.astro";
+
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+const aboutMePost = await getEntry("spec", "aboutme");
+
+if (!aboutMePost) {
+	throw new Error("About me page content not found");
+}
+
+const { Content } = await render(aboutMePost);
+const title = i18n(I18nKey.navAboutme);
+---
+
+<MainGridLayout title={title} showPageOverlayTitle={false}>
+	<!-- 引入右侧边栏布局管理器 -->
+	<script>
+		import("../scripts/right-sidebar-layout.js");
+	</script>
+	<div
+		class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32"
+	>
+		<div class="card-base z-10 px-9 py-6 relative w-full">
+			<!-- 从MD文件读取的内容 -->
+			<Markdown class="mt-2">
+				<Content />
+			</Markdown>
+		</div>
+	</div>
+
+	<div class="mt-4">
+		<Comment path="/aboutme/" />
+	</div>
+</MainGridLayout>

@@ -5,8 +5,12 @@ import { LinkPresets } from "../../../constants/link-presets";
 import I18nKey from "../../../i18n/i18nKey";
 import { i18n } from "../../../i18n/translation";
 import type { LinkPreset, NavBarLink } from "../../../types/config";
+import { isNavLinkActive } from "../../../utils/nav-active";
 import { url } from "../../../utils/url-utils";
 import type { NavMenuPanelProps, ProcessedNavBarLink } from "./types";
+
+const isCurrentLink = (href: string, external?: boolean): boolean =>
+	!external && isNavLinkActive(url(href), Astro.url);
 
 const navTitleMap: Record<string, string> = {
 	Links: I18nKey.navLinks,
@@ -56,16 +60,18 @@ const processedLinks: ProcessedNavBarLink[] = (
 >
 	{
 		processedLinks.map((link) => (
-			<div class="mobile-menu-item">
+			<div class="mobile-menu-item" data-nav-group>
 				{link.children && link.children.length > 0 ? (
 					<div class="mobile-dropdown" data-mobile-dropdown>
 						<button
 							class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-4 w-full text-left
                             hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition"
 							data-mobile-dropdown-trigger
+							data-nav-parent
+							data-nav-active={link.children.some((child) => isCurrentLink(child.url, child.external)) ? "" : undefined}
 							aria-expanded="false"
 						>
-							<div class="flex items-center transition text-black/75 dark:text-white/75 font-bold">
+							<div data-nav-label class="flex items-center transition text-black/75 dark:text-white/75 font-bold">
 								{link.icon && (
 									<Icon
 										name={link.icon}
@@ -90,8 +96,10 @@ const processedLinks: ProcessedNavBarLink[] = (
 									class="group flex justify-between items-center py-2 pl-6 pr-1 rounded-lg gap-4
                                    hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition"
 									target={child.external ? "_blank" : null}
+									data-nav-link={child.external ? undefined : ""}
+									aria-current={isCurrentLink(child.url, child.external) ? "page" : undefined}
 								>
-									<div class="flex items-center transition text-black/60 dark:text-white/60 font-medium">
+									<div data-nav-label class="flex items-center transition text-black/60 dark:text-white/60 font-medium">
 										{child.icon && (
 											<Icon
 												name={child.icon}
@@ -117,8 +125,10 @@ const processedLinks: ProcessedNavBarLink[] = (
                     hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
                 "
 						target={link.external ? "_blank" : null}
+						data-nav-link={link.external ? undefined : ""}
+						aria-current={isCurrentLink(link.url, link.external) ? "page" : undefined}
 					>
-						<div class="flex items-center transition text-black/75 dark:text-white/75 font-bold">
+						<div data-nav-label class="flex items-center transition text-black/75 dark:text-white/75 font-bold">
 							{link.icon && (
 								<Icon
 									name={link.icon}

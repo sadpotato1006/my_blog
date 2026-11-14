@@ -15,7 +15,7 @@ html[data-layout-variant="post"]
   #post-container
   :where(.markdown-content, .markdown-section)
   > * {
-  max-width: min(100%, var(--post-reading-width));
+  max-width: 100%;
   margin-inline-start: 0;
   margin-inline-end: auto;
 }

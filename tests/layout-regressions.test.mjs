@@ -163,7 +163,7 @@ describe("Markdown layout regressions", () => {
 		);
 	});
 
-	it("separates the post reading rail from intrinsically wide content", () => {
+	it("aligns post prose with the available card width", () => {
 		assert.ok(
 			markdownSource.includes('import "@/styles/post-content-rails.css";'),
 			"post rail styles must follow every Markdown rendering path",
@@ -176,8 +176,8 @@ describe("Markdown layout regressions", () => {
 		);
 		assert.match(
 			postContentRailStyles,
-			/:where\(\.markdown-content, \.markdown-section\)[\s\S]*?>\s*\*\s*\{[\s\S]*?max-width:\s*min\(100%, var\(--post-reading-width\)\)[\s\S]*?margin-inline-start:\s*0;[\s\S]*?margin-inline-end:\s*auto/,
-			"ordinary Markdown blocks must stay on a left-aligned reading rail",
+			/:where\(\.markdown-content, \.markdown-section\)[\s\S]*?>\s*\*\s*\{[\s\S]*?max-width:\s*100%[\s\S]*?margin-inline-start:\s*0;[\s\S]*?margin-inline-end:\s*auto/,
+			"ordinary Markdown blocks must use the full available card width and stay left-aligned",
 		);
 		assert.match(
 			postContentRailStyles,

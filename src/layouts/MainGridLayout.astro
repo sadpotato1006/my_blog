@@ -30,6 +30,7 @@ import GridScripts from "./partials/GridScripts.astro";
 
 interface Props {
 	title?: string;
+	showPageOverlayTitle?: boolean;
 	banner?: string;
 	description?: string;
 	lang?: string;
@@ -48,6 +49,7 @@ const bannerImages = await getBannerImages(siteConfig);
 
 const {
 	title,
+	showPageOverlayTitle = true,
 	banner,
 	description,
 	lang,
@@ -242,7 +244,7 @@ const defaultPostListLayout = siteConfig.postListLayout?.defaultMode || "list";
 					>
 						<div
 							id="page-overlay-data"
-							data-title={title || ""}
+							data-title={showPageOverlayTitle ? title || "" : ""}
 							data-date={publishedDate ? formatDateToYYYYMMDD(publishedDate, publishedDateOnly) : ""}
 							data-category={category || ""}
 							data-words={wordCount ? String(wordCount) : ""}

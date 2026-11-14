@@ -9,6 +9,7 @@ enum I18nKey {
 	navLinks = "navLinks",
 	navMy = "navMy",
 	navAbout = "navAbout",
+	navAboutme = "navAboutme",
 	navOthers = "navOthers",
 
 	tags = "tags",
