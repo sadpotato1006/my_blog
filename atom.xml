@@ -2,21 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh_CN">
   <title>sadpotato</title>
   <subtitle>blog</subtitle>
-  <link href="https://sadpotato.de5.net/" rel="alternate" type="text/html"/>
-  <link href="https://sadpotato.de5.net/atom.xml" rel="self" type="application/atom+xml"/>
-  <id>https://sadpotato.de5.net/</id>
+  <link href="https://blog.sadpotato.de5.net/" rel="alternate" type="text/html"/>
+  <link href="https://blog.sadpotato.de5.net/atom.xml" rel="self" type="application/atom+xml"/>
+  <id>https://blog.sadpotato.de5.net/</id>
   <updated>2026-11-13T00:00:00.000Z</updated>
   <entry>
     <title>How my blog was build</title>
-    <link href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/" rel="alternate" type="text/html"/>
-    <id>https://sadpotato.de5.net/posts/how-my-blog-was-buid/</id>
+    <link href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/" rel="alternate" type="text/html"/>
+    <id>https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/</id>
     <published>2026-11-13T00:00:00.000Z</published>
     <updated>2026-11-13T00:00:00.000Z</updated>
     <summary>How my blog was build</summary>
-    <content type="html"><![CDATA[<section class="markdown-section"><h2 id="准备工作">准备工作<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>Github账号 Cloudflare账号 域名</p></section>
-<section class="markdown-section"><h2 id="下载模板及依赖">下载模板及依赖<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E4%B8%8B%E8%BD%BD%E6%A8%A1%E6%9D%BF%E5%8F%8A%E4%BE%9D%E8%B5%96"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>本博客基于该主题进行二次修改：<code>https://github.com/matsuzaka-yuki/Mizuki</code><br />
+    <content type="html"><![CDATA[<section class="markdown-section"><h2 id="准备工作">准备工作<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>Github账号 Cloudflare账号 域名</p></section>
+<section class="markdown-section"><h2 id="下载模板及依赖">下载模板及依赖<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E4%B8%8B%E8%BD%BD%E6%A8%A1%E6%9D%BF%E5%8F%8A%E4%BE%9D%E8%B5%96"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>本博客基于该主题进行二次修改：<code>https://github.com/matsuzaka-yuki/Mizuki</code><br />
 关于如何下载 见其文档 <code>https://docs.mizuki.mysqil.com/guide/get-started/</code></p></section>
-<section class="markdown-section"><h2 id="配置-mizukisrcconfig">配置 Mizuki/src/config<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E9%85%8D%E7%BD%AE-mizukisrcconfig"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>我觉得这个主题的元素过多，有点杂乱，所以删了一些 <del>(其实只是单纯把入口删了 文件没删 感兴趣的大手子们可以按f12找找真的会有人感兴趣吗)</del><br />
+<section class="markdown-section"><h2 id="配置-mizukisrcconfig">配置 Mizuki/src/config<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E9%85%8D%E7%BD%AE-mizukisrcconfig"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>我觉得这个主题的元素过多，有点杂乱，所以删了一些 <del>(其实只是单纯把入口删了 文件没删 感兴趣的大手子们可以按f12找找真的会有人感兴趣吗)</del><br />
 具体修改如下：</p><div class="table-wrapper">
 
 
@@ -47,22 +47,22 @@
 
 
 <table><thead><tr><th>文件位置</th><th>修改内容</th></tr></thead><tbody><tr><td><code>Mizuki/src/config/announcementConfig.ts</code></td><td>修改title content</td></tr><tr><td><code>Mizuki/src/config/pioConfig.ts</code></td><td>关闭看板娘</td></tr><tr><td><code>Mizuki/src/config/profileConfig.ts</code></td><td>配置各种个人信息</td></tr><tr><td><code>Mizuki/src/config/sidebarConfig.ts</code></td><td>关闭分类和日历组件 并把右侧组件都移到左边</td></tr><tr><td><code>Mizuki/src/config/siteConfig.ts</code></td><td>配置个人信息 关闭冗余页面 并配置壁纸的路径</td></tr></tbody></table></div><p>还有一些细小的配置(比如改语言什么的)可参考官方文档 不再赘述</p></section>
-<section class="markdown-section"><h2 id="添加个人介绍页面">添加个人介绍页面<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E6%B7%BB%E5%8A%A0%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D%E9%A1%B5%E9%9D%A2"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>自带的”关于我”界面其实是关于主题作者的) 所以俺(让伟大的ai大人)写了一份 替换掉<br />
+<section class="markdown-section"><h2 id="添加个人介绍页面">添加个人介绍页面<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E6%B7%BB%E5%8A%A0%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D%E9%A1%B5%E9%9D%A2"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>自带的”关于我”界面其实是关于主题作者的) 所以俺(让伟大的ai大人)写了一份 替换掉<br />
 位置在 <code>Mizuki/src/content/spec/aboutme.md</code></p></section>
-<section class="markdown-section"><h2 id="更换壁纸和头像">更换壁纸和头像<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E6%9B%B4%E6%8D%A2%E5%A3%81%E7%BA%B8%E5%92%8C%E5%A4%B4%E5%83%8F"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>壁纸资源放到这里 <code>Mizuki/src/assets/public/assets/desktop-banner</code> 默认配置会自动轮播<br />
+<section class="markdown-section"><h2 id="更换壁纸和头像">更换壁纸和头像<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E6%9B%B4%E6%8D%A2%E5%A3%81%E7%BA%B8%E5%92%8C%E5%A4%B4%E5%83%8F"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>壁纸资源放到这里 <code>Mizuki/src/assets/public/assets/desktop-banner</code> 默认配置会自动轮播<br />
 还需要在这里配置路径 <code>Mizuki/src/config/siteConfig.ts</code><br />
 头像放到这里 <code>Mizuki/src/assets/images</code></p></section>
-<section class="markdown-section"><h2 id="部署数据库服务">部署数据库服务<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E9%83%A8%E7%BD%B2%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%8D%E5%8A%A1"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>我这里用的是Twikoo 链接在这里 <code>https://twikoo.js.org/</code><br />
+<section class="markdown-section"><h2 id="部署数据库服务">部署数据库服务<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E9%83%A8%E7%BD%B2%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%8D%E5%8A%A1"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>我这里用的是Twikoo 链接在这里 <code>https://twikoo.js.org/</code><br />
 部署到Cloudflare Workder上 具体步骤见Twikoo文档 <code>https://twikoo.js.org/backend.html</code> 运行一些<del>之乎者也的</del>命令就配好了<br />
 由于*.workers.dev在中国大陆会被DNS污染导致无法访问 所以还需要自己有的域名配上<br />
 在worker-域里面点点就配好了 很简单</p></section>
-<section class="markdown-section"><h2 id="部署到cloudflare-pages">部署到Cloudflare Pages<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E9%83%A8%E7%BD%B2%E5%88%B0cloudflare-pages"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>先去github创建一个仓库 把博客资源都推上去 然后去cloudflare pages里面直接选中仓库就完事了<br />
+<section class="markdown-section"><h2 id="部署到cloudflare-pages">部署到Cloudflare Pages<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E9%83%A8%E7%BD%B2%E5%88%B0cloudflare-pages"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>先去github创建一个仓库 把博客资源都推上去 然后去cloudflare pages里面直接选中仓库就完事了<br />
 具体可以看Mizuki的文档 <code>https://docs.mizuki.mysqil.com/guide/get-started/</code><br />
 我的域名是从 <code>https://my.dnshe.com/clientarea.php?language=chinese&amp;autolang=1</code> 这个网站免费薅的 虽然是个二级域名 但最起码还能托管到Cloudflare 就先用着吧</p></section>
-<section class="markdown-section"><h2 id="关于如何写博客">关于如何写博客<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>在这个目录下面新建一个文件夹 <code>Mizuki/src/content/posts</code><br />
+<section class="markdown-section"><h2 id="关于如何写博客">关于如何写博客<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>在这个目录下面新建一个文件夹 <code>Mizuki/src/content/posts</code><br />
 然后在新文件夹里面创建index.md 用markdown写<br />
 如果有加图片资源什么的需求的话直接放到新文件夹里面就能引用了 <del>(不过我还没有试过 都怪万恶的期中考试)</del></p></section>
-<section class="markdown-section"><h2 id="写在最后">写在最后<a class="anchor" href="https://sadpotato.de5.net/posts/how-my-blog-was-buid/#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>其实这个模板把很多事情都做好了 基本就改改个人信息 再让ai大人个性化一下 最后部署就ok了<br />
+<section class="markdown-section"><h2 id="写在最后">写在最后<a class="anchor" href="https://blog.sadpotato.de5.net/posts/how-my-blog-was-buid/#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="anchor-icon" data-pagefind-ignore>#</span></a></h2><p>其实这个模板把很多事情都做好了 基本就改改个人信息 再让ai大人个性化一下 最后部署就ok了<br />
 还有什么不会的直接问伟大的ai大人就可以了 其实我觉得我写这个都没人看的<del>哈哈) 写出来自己感动自己这一块</del></p></section>]]></content>
     <author><name>悲伤破忒头</name></author>
     <category term="Guide"/>
