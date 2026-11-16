@@ -1,8 +1,8 @@
 ---
-title: How my blog was build
+title: How I Built My Blog
 published: 2026-11-13
 pinned: true
-description: How my blog was build
+description: How I Built My Blog
 tags: [Blogging, Tutorial]
 category: Guide
 licenseName: "Unlicensed"
@@ -19,12 +19,12 @@ Github账号 Cloudflare账号 域名
 
 ## 下载模板及依赖
 
-本博客基于该主题进行二次修改：`https://github.com/matsuzaka-yuki/Mizuki`  
-关于如何下载 见其文档 `https://docs.mizuki.mysqil.com/guide/get-started/`
+本博客基于该主题进行二次修改：[Mizuki](https://github.com/matsuzaka-yuki/Mizuki)  
+关于如何下载 见其文档 [Mizuki 入门文档](https://docs.mizuki.mysqil.com/guide/get-started/)
 
 ## 配置 Mizuki/src/config
 
-我觉得这个主题的元素过多，有点杂乱，所以删了一些 ~~(其实只是单纯把入口删了 文件没删 感兴趣的大手子们可以按f12找找真的会有人感兴趣吗)~~  
+我觉得这个主题的元素过多，有点杂乱，所以删了一些 ~~(其实只是单纯把入口删了 文件没删 感兴趣的大手子们可以按f12找找 真的会有人感兴趣吗)~~  
 具体修改如下：
 
 | 文件位置                                  | 修改内容                                   |
@@ -50,16 +50,16 @@ Github账号 Cloudflare账号 域名
 
 ## 部署数据库服务
 
-我这里用的是Twikoo 链接在这里 `https://twikoo.js.org/`  
-部署到Cloudflare Workder上 具体步骤见Twikoo文档 `https://twikoo.js.org/backend.html` 运行一些~~之乎者也的~~命令就配好了  
+我这里用的是Twikoo 链接在这里 [Twikoo](https://twikoo.js.org/)  
+部署到Cloudflare Workder上 具体步骤见Twikoo文档 [Twikoo 部署文档](https://twikoo.js.org/backend.html) 运行一些~~之乎者也的~~命令就配好了  
 由于\*.workers.dev在中国大陆会被DNS污染导致无法访问 所以还需要自己有的域名配上  
 在worker-域里面点点就配好了 很简单
 
 ## 部署到Cloudflare Pages
 
 先去github创建一个仓库 把博客资源都推上去 然后去cloudflare pages里面直接选中仓库就完事了  
-具体可以看Mizuki的文档 `https://docs.mizuki.mysqil.com/guide/get-started/`  
-我的域名是从 `https://my.dnshe.com/clientarea.php?language=chinese&autolang=1` 这个网站免费薅的 虽然是个二级域名 但最起码还能托管到Cloudflare 就先用着吧
+具体可以看Mizuki的文档 [Mizuki 入门文档](https://docs.mizuki.mysqil.com/guide/get-started/)  
+我的域名是从 [DNSHE](https://my.dnshe.com/clientarea.php?language=chinese&autolang=1) 这个网站免费薅的 虽然是个二级域名 但最起码还能托管到Cloudflare 就先用着吧
 
 ## 关于如何写博客
 

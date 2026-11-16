@@ -68,12 +68,13 @@ const hasBannerLink = !!siteConfig.banner.credit.url;
 // 检查是否为首页
 const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
 const layoutVariant = postSlug ? "post" : isHomePage ? "home" : "default";
+const pageWallpaperMode = isHomePage ? siteConfig.wallpaperMode.defaultMode : "none";
 // 手机端非首页不显示banner的CSS类
 const mobileNonHomeBannerClass = !isHomePage ? "mobile-hide-banner" : "";
 
 // 计算主内容区域位置
 const finalMainPanelTop = getMainPanelTop(
-	siteConfig.wallpaperMode.defaultMode,
+	pageWallpaperMode,
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_FULLSCREEN,
 );
@@ -97,9 +98,7 @@ const { hasRightSidebarComponents, hasMobileDrawerComponents } =
 	sidebarPresence;
 
 // 半透明效果
-const shouldEnable = shouldEnableTransparency(
-	siteConfig.wallpaperMode.defaultMode,
-);
+const shouldEnable = shouldEnableTransparency(pageWallpaperMode);
 const transparentClass = getTransparencyClass(shouldEnable);
 
 // 布局模式
@@ -160,7 +159,7 @@ const defaultPostListLayout = siteConfig.postListLayout?.defaultMode || "list";
 
 	<!-- Main content -->
 	<div
-		class={`absolute w-full z-30 pointer-events-none ${mobileNonHomeBannerClass ? "mobile-main-no-banner" : ""} ${siteConfig.wallpaperMode.defaultMode === "none" ? "no-banner-layout" : ""} ${transparentClass}`}
+		class={`absolute w-full z-30 pointer-events-none ${mobileNonHomeBannerClass ? "mobile-main-no-banner" : ""} ${pageWallpaperMode === "none" ? "no-banner-layout" : ""} ${transparentClass}`}
 		style={`top: ${finalMainPanelTop}`}
 	>
 		<!-- The pointer-events-none here prevent blocking the click event of the TOC -->
@@ -250,7 +249,7 @@ const defaultPostListLayout = siteConfig.postListLayout?.defaultMode || "list";
 							data-words={wordCount ? String(wordCount) : ""}
 							data-is-post={postSlug ? "true" : "false"}
 							data-is-home={isHomePage ? "true" : "false"}
-							data-wallpaper-mode={siteConfig.wallpaperMode.defaultMode}
+							data-wallpaper-mode={pageWallpaperMode}
 							class="hidden"
 						>
 						</div>
@@ -297,8 +296,7 @@ const defaultPostListLayout = siteConfig.postListLayout?.defaultMode || "list";
 							"-right-(--toc-width)",
 							{
 								"toc-hide":
-									siteConfig.wallpaperMode.defaultMode ===
-									"banner",
+									pageWallpaperMode === "banner",
 							},
 						]}
 					>

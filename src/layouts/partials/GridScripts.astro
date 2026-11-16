@@ -192,10 +192,18 @@ const {
 		root.style.removeProperty("--card-transparent-opacity");
 	}
 
+	function getPageWallpaperMode() {
+		if (document.body.dataset.isHome !== "true") {
+			return "none";
+		}
+		return wallpaperEnabled
+			? (localStorage.getItem("wallpaperMode") || defaultWallpaperMode)
+			: defaultWallpaperMode;
+	}
+
 	// 立即执行，在页面渲染前应用壁纸模式和布局模式，避免闪烁
 	(function () {
-		const wallpaperMode =
-			wallpaperEnabled ? (localStorage.getItem("wallpaperMode") || defaultWallpaperMode) : defaultWallpaperMode;
+		const wallpaperMode = getPageWallpaperMode();
 		const body = document.body;
 		applyWallpaperVisualSettings(wallpaperMode);
 
@@ -292,8 +300,7 @@ const {
 
 	// 根据壁纸模式动态设置 banner 和全屏壁纸的显示
 	function applyWallpaperMode() {
-		const wallpaperMode =
-			wallpaperEnabled ? (localStorage.getItem("wallpaperMode") || defaultWallpaperMode) : defaultWallpaperMode;
+		const wallpaperMode = getPageWallpaperMode();
 
 		// 同步波浪状态：配置 enable 优先，其次 localStorage
 		if (!wavesEnabled) {

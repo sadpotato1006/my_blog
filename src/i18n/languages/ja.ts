@@ -12,6 +12,7 @@ export const ja: Translation = {
 	[Key.navLinks]: "リンク",
 	[Key.navMy]: "私の",
 	[Key.navAbout]: "情報",
+	[Key.navAboutme]: "自己紹介",
 	[Key.navOthers]: "その他",
 
 	[Key.tags]: "タグ",

@@ -11,7 +11,7 @@ import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
 import { pluginLanguageLogo } from "ec-lang-logo";
 import "katex/dist/contrib/mhchem.mjs";
-import { oddmisc } from "oddmisc";
+import { oddmisc } from "oddmisc/astro";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeCodeGroup from "rehype-code-group";
 import rehypeComponents from "rehype-components";
@@ -130,7 +130,10 @@ export default defineConfig({
 			cache: true,
 			preload: false, // 禁用预加载以提升性能
 			accessibility: true,
-			updateHead: process.env.NODE_ENV === "production",
+			updateHead: {
+				awaitAssets: true, // 页面切换前等待新增样式加载完成
+				persistAssets: true, // 保留 Vite 和评论等组件动态注入的样式
+			},
 			updateBodyClass: false,
 			globalInstance: true,
 			// 滚动相关配置优化

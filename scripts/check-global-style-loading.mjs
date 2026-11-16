@@ -77,6 +77,9 @@ const pages = [
 			["--radius-large:", "shared radius variable"],
 			["#banner-carousel", "banner layout styles"],
 			[".widget-container", "responsive widget styles"],
+			[".custom-md .table-wrapper", "Markdown table styles before navigation"],
+			[".custom-md code", "inline code styles before navigation"],
+			[".card-github", "extended Markdown styles before navigation"],
 		],
 	},
 	{

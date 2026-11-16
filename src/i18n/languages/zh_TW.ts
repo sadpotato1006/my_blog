@@ -12,6 +12,7 @@ export const zh_TW: Translation = {
 	[Key.navLinks]: "連結",
 	[Key.navMy]: "我的",
 	[Key.navAbout]: "關於",
+	[Key.navAboutme]: "關於我",
 	[Key.navOthers]: "其他",
 
 	[Key.tags]: "標籤",

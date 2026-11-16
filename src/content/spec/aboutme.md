@@ -12,5 +12,4 @@ More about me coming soon...
 
 **Github**: https://github.com/sadpotato1006
 
-> 救赎之道 就在其中  
-> 欢迎大家评论!
+> 救赎之道 就在其中

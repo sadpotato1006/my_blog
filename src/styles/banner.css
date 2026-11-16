@@ -33,6 +33,12 @@
 /* ==========================================================================
    无 Banner 模式布局
    ========================================================================== */
+/* 首页以外的页面始终隐藏横幅与全屏壁纸，包括页面过渡期间。 */
+body[data-is-home="false"] #banner-wrapper,
+body[data-is-home="false"] [data-fullscreen-wallpaper] {
+  display: none !important;
+}
+
 body.no-banner-mode .absolute.w-full.z-30 {
   top: 5.5rem !important;
 }

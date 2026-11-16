@@ -25,6 +25,10 @@ import "../styles/mobile-navbar.css";
 import "../styles/wallpaper-navbar-transparent.css";
 import "../styles/fancybox-custom.css";
 import "../styles/expressive-code.css";
+// 首屏即加载正文样式，站内切换时不依赖文章页额外请求 CSS。
+import "../styles/markdown.css";
+import "../styles/markdown-extend.styl";
+import "../styles/post-content-rails.css";
 import "../styles/panel-animations.css";
 
 // 导入新提取的 Head 组件
@@ -102,7 +106,8 @@ if (!banner || typeof banner !== "string" || banner.trim() === "") {
 // TODO don't use post cover as banner for now
 banner = getDefaultBanner();
 
-const enableBanner = !!siteConfig.banner.src;
+const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const enableBanner = isHomePage && !!siteConfig.banner.src;
 
 let pageTitle: string;
 if (title) {
@@ -224,9 +229,10 @@ const bannerOffset =
 	<body
 		class="min-h-screen"
 		class:list={[
-			{ "enable-banner": enableBanner, "enable-card-border": siteConfig.card?.border },
+			{ "enable-banner": enableBanner, "no-banner-mode": !isHomePage, "enable-card-border": siteConfig.card?.border },
 		]}
 
+		data-is-home={isHomePage ? "true" : "false"}
 		data-overlayscrollbars-initialize
 	>
 		<noscript

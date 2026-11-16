@@ -8,6 +8,7 @@ interface Props {
 
 const config = {
 	...commentConfig.twikoo,
+	placeholder: "说点什么吧，分享你的想法～",
 	el: "#tcomment",
 	path: Astro.props.path,
 };
@@ -33,11 +34,48 @@ const config = {
 				: pathname;
 		}
 
+		function compactCommentHeaders() {
+			const comments = document.querySelectorAll("#twikoo-container .tk-comment");
+			for (const comment of comments) {
+				const main = comment.querySelector(":scope > .tk-main");
+				const header = main?.querySelector(":scope > .tk-row > .tk-meta");
+				if (!header) continue;
+
+				header.querySelectorAll(":scope > .tk-header-reply, :scope > .tk-header-extras")
+					.forEach((copy) => copy.remove());
+
+				// 保留 Twikoo 管理的原节点，仅在昵称旁显示副本。
+				const replyTarget = main.querySelector(":scope > .tk-content > span > .tk-ruser");
+				if (replyTarget) {
+					const reply = replyTarget.parentElement.cloneNode(true);
+					reply.classList.add("tk-header-reply");
+					const trailing = reply.lastChild;
+					if (trailing?.nodeType === Node.TEXT_NODE) {
+						trailing.textContent = trailing.textContent.replace(/\s*[:：]\s*$/, "");
+					}
+					reply.querySelector(".tk-ruser").addEventListener("click", (event) => {
+						event.preventDefault();
+						replyTarget.click();
+					});
+					header.append(reply);
+				}
+
+				const extras = main.querySelector(":scope > .tk-extras");
+				if (extras) {
+					const copy = extras.cloneNode(true);
+					copy.classList.add("tk-header-extras");
+					header.append(copy);
+				}
+				comment.classList.add("tk-comment-compact");
+			}
+		}
+
 		function createTwikooConfig() {
 			return {
 				...config,
 				path: getCurrentPath(),
 				el: "#tcomment",
+				onCommentLoaded: compactCommentHeaders,
 			};
 		}
 

@@ -89,7 +89,7 @@ export const siteConfig: SiteConfig = {
 		allowSwitch: true,
 		// 文章列表页分类导航条配置
 		categoryBar: {
-			enable: true, // 是否在文章列表页显示分类导航条
+			enable: false, // 是否在文章列表页显示分类导航条
 		},
 	},
 
@@ -138,7 +138,7 @@ export const siteConfig: SiteConfig = {
 
 		carousel: {
 			enable: true,
-			interval: 2,
+			interval: 7,
 			switchable: true,
 		},
 
@@ -169,7 +169,7 @@ export const siteConfig: SiteConfig = {
 
 				speed: 100, // 打字速度（毫秒）
 				deleteSpeed: 50, // 删除速度（毫秒）
-				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
+				pauseTime: 3000, // 完全显示后的暂停时间（毫秒）
 			},
 		},
 
@@ -203,7 +203,7 @@ export const siteConfig: SiteConfig = {
 		// }
 	],
 
-	showLastModified: true, // 控制"上次编辑"卡片显示的开关
+	showLastModified: false, // 控制"上次编辑"卡片显示的开关
 	pageProgressBar: {
 		enable: true, // 启用页面顶部进度条
 		height: 3, // 进度条高度 3px

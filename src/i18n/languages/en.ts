@@ -12,6 +12,7 @@ export const en: Translation = {
 	[Key.navLinks]: "Links",
 	[Key.navMy]: "My",
 	[Key.navAbout]: "About",
+	[Key.navAboutme]: "About Me",
 	[Key.navOthers]: "Others",
 
 	[Key.tags]: "Tags",

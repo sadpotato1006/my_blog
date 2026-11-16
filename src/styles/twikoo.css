@@ -10,8 +10,23 @@ html.dark {
   --code-block-text: #d1d5db; /* 在深色模式下使用更亮的颜色 */
 }
 
-.tk-comments {
+/* 先显示评论列表，再显示底部输入区；行内回复表单维持原位。 */
+#twikoo-container .tk-comments {
   @apply text-(--tk-text);
+  display: flex;
+  flex-direction: column;
+}
+
+#twikoo-container .tk-comments > .tk-comments-container {
+  order: 1;
+  min-height: 0;
+}
+
+#twikoo-container .tk-comments > .tk-submit {
+  order: 2;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(144, 147, 153, 0.2);
 }
 
 .tk-submit {
@@ -26,15 +41,21 @@ html.dark {
     @apply flex-col-reverse;
     .tk-input {
       textarea {
-        @apply rounded-(--radius-large) py-4 px-6 !min-h-[150px] focus:border-(--primary);
+        @apply rounded-xl py-2.5 px-4 !min-h-[80px] focus:border-(--primary);
       }
     }
   }
 }
 
+
+#twikoo-container .tk-input textarea::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
 /* Meta */
 .tk-meta-input {
-  @apply relative mt-3;
+  @apply relative mt-2;
   div {
     @apply min-h-10;
     .el-input-group__prepend {
@@ -50,7 +71,7 @@ html.dark {
 
 /* Button */
 .tk-row.actions {
-  @apply w-full !ml-0 !mt-0;
+  @apply w-full !ml-0 !mt-0 !mb-0;
   .__markdown {
     @apply !hidden;
   }
@@ -71,11 +92,104 @@ html.dark {
   }
 }
 
-.tk-comment {
-  @apply border-[1px] border-[rgba(144,147,153,0.31)] p-4 rounded-2xl hover:shadow-md transition-all;
+/* 压缩每条评论及回复的纵向留白，并覆盖 Twikoo 动态注入的默认间距。 */
+#twikoo-container .tk-comment {
+  @apply border-[1px] border-[rgba(144,147,153,0.31)] px-4 py-2 rounded-2xl hover:shadow-md transition-all;
+  margin-top: 0.5rem;
+
+  .tk-content {
+    margin-top: 0.25rem;
+  }
+
   .tk-action-icon {
     color: var(--primary);
   }
+}
+
+/* 评论头部保持紧凑，小屏幕自动换行。 */
+#twikoo-container .tk-comment > .tk-avatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 0.625rem;
+}
+
+#twikoo-container .tk-comment > .tk-avatar .tk-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#twikoo-container .tk-comment > .tk-main {
+  min-width: 0;
+}
+
+#twikoo-container .tk-comment > .tk-main > .tk-row {
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+#twikoo-container .tk-comment > .tk-main > .tk-row > .tk-action {
+  flex-shrink: 0;
+}
+
+#twikoo-container .tk-comment > .tk-main > .tk-row > .tk-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.125rem 0.5rem;
+  min-width: 0;
+  line-height: 1.5;
+}
+
+#twikoo-container .tk-meta > .tk-header-reply,
+#twikoo-container .tk-meta > .tk-header-extras {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+#twikoo-container .tk-header-reply .tk-ruser {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+#twikoo-container .tk-meta > .tk-header-extras {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.125rem 0.5rem;
+}
+
+#twikoo-container .tk-header-extras > .tk-extra {
+  margin: 0;
+}
+
+#twikoo-container .tk-comment-compact > .tk-main > .tk-extras,
+#twikoo-container .tk-comment-compact > .tk-main > .tk-content > span:has(> .tk-ruser) {
+  display: none;
+}
+
+#twikoo-container .tk-content .vemoji,
+#twikoo-container .tk-content .tk-owo-emotion {
+  width: auto;
+  height: auto;
+  max-width: 1.5em;
+  max-height: 1.25em;
+  vertical-align: text-bottom !important;
+}
+
+#twikoo-container .tk-replies .tk-comment {
+  padding: 0.375rem 0.625rem;
+  margin-top: 0.375rem;
+  border-radius: 0.75rem;
+}
+
+#twikoo-container .tk-replies .tk-comment > .tk-avatar {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+#twikoo-container .tk-replies .tk-comment > .tk-main > .tk-content {
+  margin-top: 0.125rem;
 }
 
 .tk-action {

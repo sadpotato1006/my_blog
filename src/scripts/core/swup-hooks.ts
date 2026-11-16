@@ -155,7 +155,7 @@ export class SwupHooksManager {
 			}
 
 			// 处理 navbar 隐藏
-			if (this.bannerEnabled) {
+			if (this.bannerEnabled && document.body.classList.contains("enable-banner")) {
 				this.handleNavbarHideOnLinkClick();
 			}
 		}) as (...args: unknown[]) => void);
@@ -323,8 +323,12 @@ export class SwupHooksManager {
 	/**
 	 * 处理 body class
 	 */
-	private handleBodyClass(_isHomePage: boolean): void {
-		// body class 统一由 CSS 处理，无需区分首页/非首页
+	private handleBodyClass(isHomePage: boolean): void {
+		document.body.dataset.isHome = String(isHomePage);
+		window.dispatchEvent(new Event("wallpaper-mode-change"));
+		if (!isHomePage) {
+			this.getCachedElement(SWUP_SELECTORS.navbarWrapper)?.classList.remove("navbar-hidden");
+		}
 	}
 
 	/**
