@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["_astro/right-sidebar-layout.CWzADC3r.js","_astro/rolldown-runtime.CRqgUL4m.js"])))=>i.map(i=>d[i]);
+import{r}from"./rolldown-runtime.CRqgUL4m.js";import{t}from"./icon-loader.BcmN4cT0.js";import{t as a}from"./preload-helper.C0wVbk5G.js";a(()=>import("./right-sidebar-layout.CWzADC3r.js").then(o=>r(o.default,1)),__vite__mapDeps([0,1]));t().catch(o=>{console.error("Failed to load Iconify:",o)});
